@@ -2,40 +2,45 @@ import API from "service/API.js";
 import { LOGIN } from "./CONSTANT";
 
 const register = (username, email, password) => {
-  return axios.post(API_URL + REGISTER_USER, {
-    username,
+  return API.post(REGISTER_USER, {
     email,
     password,
   });
 };
 
-const login = (username, password) => {
-  return axios
-    .post(API_URL + LOGIN, {
-      username,
-      password,
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-
-      return response.data;
-    });
+const login = (email, password) => {
+  return API.post(LOGIN, {
+    email,
+    password,
+  }).then((response) => {
+    if (response.data.accessToken) {
+      localStorage.setItem("user", JSON.stringify(response.data));
+    }
+    return response.data;
+  });
 };
 
-const logout = () => {
-  localStorage.removeItem("user");
-};
-
-export default function authHeader() {
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if (user && user.accessToken) {
-    return { Authorization: "Bearer " + user.accessToken };
+function authHeader() {
+  if (sessionStorage.getItem("token")) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return {
+      Authorization: "JWT " + user.accessToken,
+      accept: "application/json",
+    };
   } else {
     return {};
   }
+}
+
+const fetchUsers = () => API.get("auth/users/");
+
+const fetchCurrentUser = () => API.get("auth/users/me/", authHeader);
+
+const verifyToken = (body) => API.post("auth/jwt/verify/", body);
+
+function logout() {
+  sessionStorage.removeItem("token");
+  window.location.href = "/auth/sign-in";
 }
 
 export default {

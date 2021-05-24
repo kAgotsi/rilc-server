@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="440" height="164" viewBox="0 0 440 164">
+  <defs>
+    <filter id="Rectangle_4" x="0" y="0" width="296" height="132" filterUnits="userSpaceOnUse">
+      <feOffset dx="4" dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_6" x="275" y="0" width="165" height="132" filterUnits="userSpaceOnUse">
+      <feOffset dx="4" dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Groupe_5" data-name="Groupe 5" transform="translate(5 -2750)">
+    <g transform="matrix(1, 0, 0, 1, -5, 2750)" filter="url(#Rectangle_4)">
+      <g id="Rectangle_4-2" data-name="Rectangle 4" transform="translate(5 5)" fill="rgba(40,74,183,0.92)" stroke="#fff" stroke-width="3">
+        <rect width="278" height="114" stroke="none"/>
+        <rect x="1.5" y="1.5" width="275" height="111" fill="none"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -5, 2750)" filter="url(#Rectangle_6)">
+      <g id="Rectangle_6-2" data-name="Rectangle 6" transform="translate(280 5)" fill="#d8c350" stroke="#fff" stroke-width="3">
+        <rect width="147" height="114" stroke="none"/>
+        <rect x="1.5" y="1.5" width="144" height="111" fill="none"/>
+      </g>
+    </g>
+    <g id="Rectangle_5" data-name="Rectangle 5" transform="translate(122 2822)" fill="#fff" stroke="#707070" stroke-width="1">
+      <rect width="10" height="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="9" fill="none"/>
+    </g>
+    <text id="groupe" transform="translate(15 2824)" fill="#d8c350" font-size="75" font-family="SofiaPro-Bold, Sofia Pro" font-weight="700"><tspan x="0" y="0">groupe</tspan></text>
+    <text id="rilc" transform="translate(295 2831)" fill="#294bb9" font-size="75" font-family="SofiaPro-Bold, Sofia Pro" font-weight="700"><tspan x="0" y="0">rilc</tspan></text>
+    <text id="rehoboth_international_logistics_and_consulting" data-name="rehoboth international logistics and consulting" transform="translate(2 2909)" fill="#fff" font-size="20" font-family="SofiaPro-Medium, Sofia Pro" font-weight="500"><tspan x="0" y="0">rehoboth international logistics and consulting</tspan></text>
+  </g>
+</svg>

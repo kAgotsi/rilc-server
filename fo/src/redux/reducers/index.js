@@ -4,8 +4,8 @@
  * combineReducers defines the structure of the store object.
  */
 import { combineReducers } from "redux";
-import { authReducer } from "./authReducer";
-import { messageReducer } from "./messageReducer";
+import { authReducer } from "../../redux/reducers/authReducer";
+import { messageReducer } from "../../redux/reducers/messageReducer";
 
 export const rootReducer = combineReducers({
   auth: authReducer,

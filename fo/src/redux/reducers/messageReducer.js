@@ -1,8 +1,8 @@
-import { SET_MESSAGE, CLEAR_MESSAGE } from "../actions/types";
+import { SET_MESSAGE, CLEAR_MESSAGE } from "../actions/type";
 
 const initialState = {};
 
-export default function (state = initialState, action) {
+export const messageReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -15,4 +15,4 @@ export default function (state = initialState, action) {
     default:
       return state;
   }
-}
+};
