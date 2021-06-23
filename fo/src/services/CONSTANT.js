@@ -18,5 +18,5 @@
 // export const GET_USER_DETAILS = (id) => `https://jsonplaceholder.typicode.com/users/${id}`;
 
 // Local endpoints. Uncomment below section to use dummy local data.
-export const LOGIN = () => `auth/jwt/create/`;
-export const REGISTER_USER = (id) => `auth/users/`;
+export const LOGIN = "auth/jwt/create/";
+export const REGISTER_USER = "auth/users/";

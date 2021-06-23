@@ -16,4 +16,4 @@ Commons commands
   pip install djangorestframework
 
 -Create the models
-Run python manage.py makemigrations python manage.py migrate to
+python manage.py makemigrations python manage.py migrate to

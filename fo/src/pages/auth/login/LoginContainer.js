@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Grid,
   Typography,
@@ -24,6 +25,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import AuthLayout from "../../../components/AuthLayout";
 import { FORGOTPASSWORD } from "../../../navigation/CONSTANT";
+import login from "../../../services/AuthService";
 
 //styles
 
@@ -44,6 +46,35 @@ export function LoginContainer() {
     event.preventDefault();
   };
   //=================== end ===============/
+
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
+
+  const dispatch = useDispatch();
+
+  const initialValues = {
+    email: "example@rilc.com",
+    password: "motdepasse",
+  };
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("L'adresse mail doit être valide")
+      .max(50)
+      .required("L'adresse mail est obligatoire"),
+    password: Yup.string().max(50).required("Le mot de passe est obligatoire"),
+  });
+
+  function onSubmit(values, { setSubmitting }) {
+    /*alert(JSON.stringify(values, null, 2));*/
+    const payload = {
+      email: values.email,
+      password: values.password,
+    };
+
+    dispatch(login(payload.email, payload.password));
+  }
+
   return (
     <AuthLayout>
       <Box
@@ -57,20 +88,9 @@ export function LoginContainer() {
       >
         <Container maxWidth="sm">
           <Formik
-            initialValues={{
-              email: "example@rilc.com",
-              password: "motdepasse",
-            }}
-            validationSchema={Yup.object().shape({
-              email: Yup.string()
-                .email("L'adresse mail doit être valide")
-                .max(50)
-                .required("L'adresse mail est obligatoire"),
-              password: Yup.string()
-                .max(50)
-                .required("Le mot de passe est obligatoire"),
-            })}
-            onSubmit={() => {}}
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
           >
             {({
               errors,

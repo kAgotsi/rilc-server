@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles, CssBaseline, Grid, Box } from "@material-ui/core";
 import logo from "../assets/images/logo.svg";
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //Login component
-export default function AuthLayout(props) {
+export default function AuthLayout({ children }) {
   const classes = useStyles();
 
   return (
@@ -56,8 +57,15 @@ export default function AuthLayout(props) {
         xs={7}
         className={classes.fieldContainer}
       >
-        {props.children}
+        {children}
       </Grid>
     </Grid>
   );
 }
+
+AuthLayout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element.isRequired,
+  ]),
+};

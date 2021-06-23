@@ -1,16 +1,12 @@
-import { applyMiddleware, compose, createStore } from "redux";
-import thunk from "redux-thunk";
+import { applyMiddleware, createStore } from "redux";
+import reduxThunk from "redux-thunk";
 import { rootReducer } from "./reducers";
-
-// devtools for debugging in dev environment.
-const devTools =
-  // eslint-disable-next-line no-undef
-  process.env.NODE_ENV !== "production" && window.__REDUX_DEVTOOLS_EXTENSION__
-    ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__()
-    : (a) => a;
+import {
+  composeWithDevTools,
+  devToolsEnhancer,
+} from "redux-devtools-extension";
 
 export const store = createStore(
   rootReducer,
-  compose(applyMiddleware(thunk), devTools)
+  composeWithDevTools(applyMiddleware(reduxThunk))
 );

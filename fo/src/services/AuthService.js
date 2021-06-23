@@ -1,7 +1,7 @@
-import API from "service/API.js";
-import { LOGIN } from "./CONSTANT";
+import API from "../services/Api";
+import { REGISTER_USER, LOGIN } from "../services/CONSTANT";
 
-const register = (username, email, password) => {
+const register = (email, password) => {
   return API.post(REGISTER_USER, {
     email,
     password,
@@ -9,6 +9,7 @@ const register = (username, email, password) => {
 };
 
 const login = (email, password) => {
+  alert(JSON.stringify(email, null, 2));
   return API.post(LOGIN, {
     email,
     password,
@@ -24,7 +25,7 @@ function authHeader() {
   if (sessionStorage.getItem("token")) {
     const user = JSON.parse(localStorage.getItem("user"));
     return {
-      Authorization: "JWT " + user.accessToken,
+      Authorization: "JWT " + sessionStorage.getItem("user.token"),
       accept: "application/json",
     };
   } else {
