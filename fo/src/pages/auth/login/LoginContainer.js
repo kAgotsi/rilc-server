@@ -47,9 +47,6 @@ export function LoginContainer() {
   };
   //=================== end ===============/
 
-  const { isLoggedIn } = useSelector((state) => state.auth);
-  const { message } = useSelector((state) => state.message);
-
   const dispatch = useDispatch();
 
   const initialValues = {
