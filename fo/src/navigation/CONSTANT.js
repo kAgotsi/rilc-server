@@ -1,3 +1,4 @@
+export const DASHBOARD = "/dashboard";
 export const LOGIN = "/";
 export const FORGOTPASSWORD = "/auth/lost-password";
 export const RESETPASSWORDREQUEST = "/auth/reset-password-request";

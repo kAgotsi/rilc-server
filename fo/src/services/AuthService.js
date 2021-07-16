@@ -33,6 +33,15 @@ function authHeader() {
   }
 }
 
+const resetPassword = (email) =>
+  API.post(
+    "auth/users/reset_password/",
+    {
+      email,
+    },
+    { headers: authHeader() }
+  );
+
 const fetchUsers = () => API.get("auth/users/");
 
 const fetchCurrentUser = () => API.get("auth/users/me/", authHeader);
@@ -44,9 +53,4 @@ function logout() {
   window.location.href = "/auth/sign-in";
 }
 
-export default {
-  register,
-  login,
-  logout,
-  authHeader,
-};
+export default { register, login, logout, authHeader, resetPassword };

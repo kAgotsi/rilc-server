@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { useHistory, Redirect, Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Grid,
@@ -24,8 +24,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import AuthLayout from "../../../components/AuthLayout";
-import { FORGOTPASSWORD } from "../../../navigation/CONSTANT";
-import login from "../../../services/AuthService";
+import { DASHBOARD, FORGOTPASSWORD } from "../../../navigation/CONSTANT";
+import AuthActions from "../../../redux/actions/authActions";
 
 //styles
 
@@ -63,13 +63,19 @@ export function LoginContainer() {
   });
 
   function onSubmit(values, { setSubmitting }) {
-    /*alert(JSON.stringify(values, null, 2));*/
     const payload = {
       email: values.email,
       password: values.password,
     };
-
-    dispatch(login(payload.email, payload.password));
+    dispatch(AuthActions.login(payload.email, payload.password))
+      .then(() => {
+        console.log("token generated");
+        setSubmitting(true);
+        <Redirect push to="/somewhere/else" />;
+      })
+      .catch((err) => {
+        setSubmitting(false);
+      });
   }
 
   return (

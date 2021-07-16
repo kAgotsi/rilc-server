@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   Grid,
   Typography,
@@ -13,9 +14,11 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import AuthLayout from "../../../components/AuthLayout";
 import { LOGIN } from "../../../navigation/CONSTANT";
+import AuthActions from "../../../redux/actions/authActions";
 
 //Forgot password component
 export function ForgotPasswordContainer() {
+  const dispatch = useDispatch();
   return (
     <AuthLayout>
       <Box
@@ -38,7 +41,10 @@ export function ForgotPasswordContainer() {
                 .max(50)
                 .required("L'adresse mail est obligatoire"),
             })}
-            onSubmit={() => {}}
+            onSubmit={(values, { setSubmitting }) => {
+              console.log(values);
+              dispatch(AuthActions.resetPassword(values.email));
+            }}
           >
             {({
               errors,
